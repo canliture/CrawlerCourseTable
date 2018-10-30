@@ -164,6 +164,6 @@ __有任何问题可以@我，canliture@outlook.com__
 
   更多的将数据呈现在Android平台上可以查看源代码。同时可以查看下面的效果图。
 
-  
-  
+  ![首页](https://img-blog.csdnimg.cn/20181030001100289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MjA2MTA1,size_16,color_FFFFFF,t_70)
+  ![主界面](https://img-blog.csdnimg.cn/2018103000112187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MjA2MTA1,size_16,color_FFFFFF,t_70)
   
