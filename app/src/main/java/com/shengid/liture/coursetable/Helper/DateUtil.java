@@ -16,7 +16,8 @@ public class DateUtil {
 
     static {
         carlendar =  Calendar.getInstance();
-        carlendar.set(2018, 9-1, 3);
+        // TODO change date
+        carlendar.set(2019, 9-1, 2);
 
         startMills = carlendar.getTimeInMillis();
 
@@ -34,7 +35,8 @@ public class DateUtil {
     // String format : "year,month,day"
     public static String firstDayOfSomeWeek(int weekTh){
         carlendar = Calendar.getInstance();
-        carlendar.set(2018, 9-1, 3);        //month starts from 0
+        // TODO change date
+        carlendar.set(2019, 9-1, 2);        //month starts from 0
 
         carlendar.add(Calendar.DATE, (weekTh-1)*7);
 

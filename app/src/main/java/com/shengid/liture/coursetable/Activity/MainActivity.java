@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shengid.liture.coursetable.Entity.Course;
 import com.shengid.liture.coursetable.Entity.CourseInfoEntity;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             weekChoose.scrollToPosition( (int)DateUtil.weekThFromStart - 1 );
         } );
 
-        //initialize week data
+        //initialize week datax
         for(int i = 1; i <= 18 ; i++)  listWeek.add( "第" + i + "周" );
 
         //set recycler layout organization
@@ -101,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
         p2.weight = weight;
         p2.setMargins(15, 15, 15, 15);
         textView.setLayoutParams(p2);
+
+        textView.setOnClickListener((view)->{
+            Toast.makeText(this, ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
+        });
 
         return textView;
     }
@@ -136,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                td.setText("星期" + (i == 7 ? "日" : i) + "\n" + dayThStr );
+                td.setText("星期" + (i == 7 ? "8" : i) + "\n" + dayThStr );
                 if (( ( DateUtil.dayOfWeekNow == 0 && i == 7) || DateUtil.dayOfWeekNow == i ) &&  ( weekTh == DateUtil.weekThFromStart )  )
                     td.setTextColor(this.getBaseContext().getResources().getColor(R.color.colorAccent));
                 else

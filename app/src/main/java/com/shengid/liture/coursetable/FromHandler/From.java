@@ -31,12 +31,10 @@ public class From {
     private static String password;
     private static String verifyCode;
 
-    private final static String loginHomePage = "http://kdjw.hnust.edu.cn/kdjw/Logon.do?method=logon";
-    private final static String verifyImgSrcURL = "http://kdjw.hnust.edu.cn/kdjw/verifycode.servlet";
+    private final static String loginHomePage = "http://kdjw.hnust.edu.cn:8080/kdjw/Logon.do?method=logon";
+    private final static String verifyImgSrcURL = "http://kdjw.hnust.edu.cn:8080/kdjw/verifycode.servlet";
     //private final static String verifyImgDestURL = "C:\\Users\\Liture\\Desktop\\verifyCodeImg.jpg";
-    private final static String getTableBaseURL = "http://kdjw.hnust.edu.cn/kdjw/tkglAction.do?method=goListKbByXs";
-
-    private final static String skipScript =  "<script language='javascript'>window.location.href='http://kdjw.hnust.edu.cn/kdjw/framework/main.jsp';</script>";
+    private final static String getTableBaseURL = "http://kdjw.hnust.edu.cn:8080/kdjw/tkglAction.do?method=goListKbByXs";
 
     private final static String cookieName = "JSESSIONID";
 
@@ -72,9 +70,10 @@ public class From {
                     loginResponse = loginConn.execute();	                            // try to login
 
                     //whether login in?
-                    if( loginResponse.body().contains( skipScript ) ){                             //if Login in successfully
-
-                        Connection	tableConn = Jsoup.connect(getTableBaseURL + "&istsxx=no" + "&xnxqh=2018-2019-1" + "&zc=" + "&xs0101id="+ userNumber );
+                    if( loginResponse.statusCode() == 200 ){                             //if Login in successfully
+                        System.out.println("Login Status: " + loginResponse.statusCode() + ", " + loginResponse.statusMessage());
+                        // TODO change date
+                        Connection	tableConn = Jsoup.connect(getTableBaseURL + "&istsxx=no" + "&xnxqh=2019-2020-1" + "&zc=" + "&xs0101id="+ userNumber );
                         tableConn.cookies(cookies);
                         Connection.Response responseTablePage = null;
 
@@ -98,6 +97,9 @@ public class From {
 
         new Thread( () ->{
             Connection conn = Jsoup.connect(verifyImgSrcURL).ignoreContentType(true);
+            Map<String, String> header = new HashMap<String, String>();
+            header.put("User-Agent", "  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0");
+            conn.headers(header);
             Connection.Response response;
             Bitmap verifyImage = null;
             try {
